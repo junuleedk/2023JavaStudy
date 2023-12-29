@@ -58,6 +58,6 @@ public class E04MethodType03_2 {
 		else {
 			System.out.println("다시 입력하세요");
 		}
-		inputGugudan2(2, 3);
+//		inputGugudan2(2, 3);
 	}
 }
