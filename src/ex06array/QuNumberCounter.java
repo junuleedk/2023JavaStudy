@@ -17,5 +17,9 @@ public class QuNumberCounter {
 			int num = answer[i];
 			counter[num - 1]++;
 		}
+		for (int i = 0; i < counter.length; i++) {
+	        	System.out.println(i + " " + counter[i]);
+	        }
+
 	}
 }

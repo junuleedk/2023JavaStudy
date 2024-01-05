@@ -26,6 +26,11 @@ class Account {
 	//잔고의 경우 입출금을 위한 연산이 필요하므로 int로 선언하다.
 	int balance;
 	
+	public Account() {}
+	//생성자 메서드는 대문자
+	//생성자명은 클래스명과 동일해야함.
+	
+	
 	//멤버메서드
 	//입금처리 : 매개변수로 전달된 money원 만큼 잔고에 합산한다. 
 	void deposit(int money) {

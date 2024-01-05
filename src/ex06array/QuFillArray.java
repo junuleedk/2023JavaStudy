@@ -34,21 +34,18 @@ public class QuFillArray {
 		System.out.println();
 	}
 
-	static void numList2(int[] numArr) {
+	static void numList2(int[] numArr1) {
+		System.out.println("홀수/짝수 구분 입력 결과");
+		int odd = 0, even = 9;
 		int[] numArr2 = new int[10];
 		
-		System.out.println("홀수/짝수 구분 입력 결과");
-		int even = 0, odd = 9;
-
-		for (int i = 0; i < numArr.length; i++) {
-			int num = numArr[i];
+		for (int i = 0; i < numArr2.length; i++) {
+			int num = numArr2[i];
 
 			if (num % 2 == 0) {
-				numArr2[odd] = num;
-				odd--;
+				numArr2[even--] = num;
 			} else {
-				numArr2[even] = num;
-				even++;
+				numArr2[odd++] = num;
 			}
 			System.out.print(numArr2[i] + " ");
 		}
