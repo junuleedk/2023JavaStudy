@@ -41,4 +41,9 @@ public class Ex01ExceptionBasic1 {
 			e.printStackTrace();
 		}
 	}
+	/*
+ 홈테스트*/
+	class Abc {
+		
+	}
 }
