@@ -33,7 +33,7 @@ public class Ex03ArrayList1 {
 		list.add("소녀시대");
 		list.add("빅뱅");
 		list.add("트와이스");
-		list.add(3, "워너원");
+//		list.add(3, "워너원");
 //		list.add(5, "소방차");//에러발생 건너띄면 안된다. 
 		
 		/*
@@ -51,7 +51,8 @@ public class Ex03ArrayList1 {
 		 		 add()는 추가에 성공할 경우 true를 반환한다. 
 		 */
 		
-		System.out.println(list.add("트와이스") ? "중복저장됨" : "중복저장안됨");
+		System.out.println(list.add("트와이스1") ? "중복저장됨" : "중복저장안됨");
+		// 질문 : add개념이 추가를 성공 실패 여부를 true fasle로 반환하니 중복보다는 추가개념이 맞나. 그리고 추가실패사례가 있나.
 		System.out.println("중복 저장후 객체수: " + list.size());
 		
 		/*

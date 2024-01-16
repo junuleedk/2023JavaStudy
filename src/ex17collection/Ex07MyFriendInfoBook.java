@@ -23,7 +23,8 @@ class Friend {
 		System.out.println("주소: " + addr);
 	}
 
-	public void showBasicInfo() {} // 주석테스트
+	public void showBasicInfo() {
+	} // 주석테스트
 }
 
 //고등학교 친구의 정보를 저장하기 위한 자식 클래스
@@ -95,8 +96,9 @@ public class Ex07MyFriendInfoBook {
 	public static void main(String[] args) {
 		// 사용자 입력을 위한 인스턴스 생성
 		Scanner scan = new Scanner(System.in);
-		/*컬렉션은 최초 생성시 크기를 지정하지 않는다. 
-		  입력 혹은 삭제되는 인스턴스에 따라 크기가 자동으로 설정된다.*/
+		/*
+		 * 컬렉션은 최초 생성시 크기를 지정하지 않는다. 입력 혹은 삭제되는 인스턴스에 따라 크기가 자동으로 설정된다.
+		 */
 		FriendInfoHandler handler = new FriendInfoHandler();
 		while (true) {
 			// 1. 메뉴를 출력한다.
@@ -116,10 +118,10 @@ public class Ex07MyFriendInfoBook {
 				handler.showSimpleData();
 				break;
 			case 5:
-				 handler.searchInfo();
+				handler.searchInfo();
 				break;
 			case 6:
-				 handler.deleteInfo();
+				handler.deleteInfo();
 				break;
 			case 7:
 				System.out.println("프로그램종료");
@@ -131,19 +133,18 @@ public class Ex07MyFriendInfoBook {
 
 /* 해당 프로그램에서 기능을 담당하는 클래스로 핸들러 혹은 매니저 클래스라고 부른다. */
 class FriendInfoHandler {
-	//멤버변수 : [기존]인스턴스배열 => [변경]List컬렉션
+	// 멤버변수 : [기존]인스턴스배열 => [변경]List컬렉션
 //	private Friend[] myFriends;
 //	private int numOfFriends;
 	/*
-	 기존에는 카운트를 위한 별도의 변수가 필요했지만, 컬렉션은 자동인덱싱을
-	 지원하므로 필요하지 않다. 즉, 컬렉션 인스턴스만 있으면 된다. 
-	  Friend 인스턴스를 저장할 수 있는 list컬렉션을 생성한다 
+	 * 기존에는 카운트를 위한 별도의 변수가 필요했지만, 컬렉션은 자동인덱싱을 지원하므로 필요하지 않다. 즉, 컬렉션 인스턴스만 있으면 된다.
+	 * Friend 인스턴스를 저장할 수 있는 list컬렉션을 생성한다
 	 */
-	ArrayList<Friend> lists; 
-	
+	ArrayList<Friend> lists;
+
 	/*
-	 멤버변수가 변경되었으므로 생성자에서도 아래와 같이 수정해야한다. 
-	 컬렉션을 초기화한다. 카운트가 필요 없으므로 매개변수 int num도 삭제한다. 
+	 * 멤버변수가 변경되었으므로 생성자에서도 아래와 같이 수정해야한다. 컬렉션을 초기화한다. 카운트가 필요 없으므로 매개변수 int num도
+	 * 삭제한다.
 	 */
 	public FriendInfoHandler() {
 //		myFriends = new Friend[num];
@@ -174,12 +175,13 @@ class FriendInfoHandler {
 			 * 하고 있다.
 			 */
 //			myFriends[numOfFriends++] = high;
-			
-			/*기존 인스턴스배열에서는 인덱스를 위한 카운트가 필요했지만 
-			  컬렉션에서는 필요하지 않다. 자동인덱싱이 지원되므로 add()를 통해
-			  추가하기만 하면된다. */
+
+			/*
+			 * 기존 인스턴스배열에서는 인덱스를 위한 카운트가 필요했지만 컬렉션에서는 필요하지 않다. 자동인덱싱이 지원되므로 add()를 통해 추가하기만
+			 * 하면된다.
+			 */
 			lists.add(high);
-			
+
 		} else if (choice == 2) {
 			// 대딩인 경우 전공을 추가입력 받는다.
 			System.out.print("전공: ");
@@ -196,32 +198,31 @@ class FriendInfoHandler {
 //		for (int i = 0; i < numOfFriends; i++) {
 //			myFriends[i].showAllData();
 //		}
-		
-		//일반 for문은 통해 반복 출력
+
+		// 일반 for문은 통해 반복 출력
 		for (int i = 0; i < lists.size(); i++) {
 			lists.get(i).showAllData();
 		}
-		
-		
+
 		System.out.println("==전체정보가 출력되었습니다.==");
 	}
 
 	// 저장된 연락처의 간략정보(2가지)만 출력하기위한 메서드
 	public void showSimpleData() {
-		
+
 //		for(int i = 0; i < numOfFriends; i++) {
 //			myFriends[i].showBasicInfo();
 //		}
-			
-		//확장 for문으로 반복 출력
-		
-		for(Friend fr : lists) {
+
+		// 확장 for문으로 반복 출력
+
+		for (Friend fr : lists) {
 			fr.showBasicInfo();
 		}
-			
+
 		System.out.println("==간략정보가 출력되었습니다.==");
 	}
-	//연락처 정보 검색
+	// 연락처 정보 검색
 //	public void searchInfo() {
 //		//검색여부 확인 위한 변수
 //		boolean isFind = false;
@@ -247,62 +248,64 @@ class FriendInfoHandler {
 //		if(isFind == false)
 //			System.out.println("***찾는 정보가 없습니다.***");
 //	}
-	
+
 	public void searchInfo() {
 		boolean isFind = false;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("검색할 이름을 입력하세요: ");
 		String searchName = scan.nextLine();
-		
-		for (int i = 0; i < lists.size(); i++) {
-			
-			Friend fr = lists.get(i);
-			if (searchName.compareTo(fr.name) == 0) {
-				lists.get(i).showAllData();
-				System.out.println("**귀하가 요청하는 정보를 찾았습니다.**");
-				isFind = true;
-			}
-			
-//		for(Friend fr : lists) {
-//			if(searchName.compareTo(fr.name) == 0) {
-//				fr.showAllData();
+
+//		for (int i = 0; i < lists.size(); i++) {
+//
+//			Friend fr = lists.get(i);
+//			if (searchName.compareTo(fr.name) == 0) {
+//				lists.get(i).showAllData();
 //				System.out.println("**귀하가 요청하는 정보를 찾았습니다.**");
 //				isFind = true;
 //			}
+
+		for(Friend fr : lists) {
+			if(searchName.compareTo(fr.name) == 0) {
+				fr.showAllData();
+				System.out.println("**귀하가 요청하는 정보를 찾았습니다.**");
+				isFind = true;
+			}
 		}
 		if (isFind == false)
 			System.out.println("*** 찾는 정보가 없습니다. ***");
 	}
- 	/*
-	 퀴즈1]검색 기능의 메서드 searchInfo()를 일반 for문을 통해 기능을 구현하시오.
-	 퀴즈2]삭제 기능의 메서드 deleteInfo()를 이터레이터를 통해 기능을 구현하시오.
-	*/
-		
+	/*
+	 * 퀴즈1]검색 기능의 메서드 searchInfo()를 일반 for문을 통해 기능을 구현하시오. 퀴즈2]삭제 기능의 메서드
+	 * deleteInfo()를 이터레이터를 통해 기능을 구현하시오.
+	 */
+
 	public void deleteInfo() {
-		
+
 		Scanner scan = new Scanner(System.in);
 		System.out.println("삭제할 이름을 입력하세요: ");
 		String deleteName = scan.nextLine();
-		//이터레이터 인스턴스를 생성
+		// 이터레이터 인스턴스를 생성
 		Iterator<Friend> itr = lists.iterator();
+		int deleteIndex = -1;
 		
-		while(itr.hasNext()) {
+		while (itr.hasNext()) {
 			Friend fr = itr.next();
-			if(deleteName.compareTo(fr.name) == 0) {
-				lists.remove(fr);
+			if (deleteName.compareTo(fr.name) == 0) {
+				itr.remove();
+				deleteIndex = 1;
 				break;
 			}
-			else if(deleteName.compareTo(fr.name) == -1) {
-				System.out.println("==삭제된 데이터가 없습니다.==");
-			}
-			else {
-				System.out.println("==데이터가 삭제되었습니다.==");
-			}
+		}
+		if (deleteIndex  == -1) {
+			System.out.println("==삭제된 데이터가 없습니다.==");
+		} 
+		else {
+			System.out.println("==데이터가 삭제되었습니다.==");
 		}
 
 	}
-	
-	//연락처 정보 삭제
+
+	// 연락처 정보 삭제
 //	public void deleteInfo() {
 //		
 //		Scanner scan = new Scanner(System.in);
