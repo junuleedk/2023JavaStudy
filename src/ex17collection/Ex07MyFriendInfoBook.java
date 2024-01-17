@@ -250,59 +250,81 @@ class FriendInfoHandler {
 //	}
 
 	public void searchInfo() {
+		//검색한 이름이 있는지 확인용
 		boolean isFind = false;
+		//스캐너 인스턴스 생성
 		Scanner scan = new Scanner(System.in);
 		System.out.println("검색할 이름을 입력하세요: ");
 		String searchName = scan.nextLine();
+		
+		//size()를 통해 컬렉션에 저장된 인스턴스의 갯수만큼 반복
+		for (int i = 0; i < lists.size(); i++) {
 
-//		for (int i = 0; i < lists.size(); i++) {
-//
-//			Friend fr = lists.get(i);
-//			if (searchName.compareTo(fr.name) == 0) {
-//				lists.get(i).showAllData();
+			/* i번째 인덱스의 인스턴스를 접근한 후 name을 얻어온다. */
+			//equals()를 통한 문자열 비교
+//			if (searchName.equals(lists.get(i).name) { //객체간 인스턴스 비교, 문자열비교, 오버라이딩, 그래서 equals를 많이 씀
+			//compareTo()를 통한 문자열 비교
+			if (searchName.compareTo(lists.get(i).name) == 0) { //문자열 비교만 가능
+				//이름이 일치하면 정보를 출력한다. 
+				lists.get(i).showAllData();
+				System.out.println("**귀하가 요청하는 정보를 찾았습니다.**");
+				//확인용 변수는 true로 변경
+				isFind = true;
+			}
+
+//		for(Friend fr : lists) {
+//			if(searchName.compareTo(fr.name) == 0) {
+//				fr.showAllData();
 //				System.out.println("**귀하가 요청하는 정보를 찾았습니다.**");
 //				isFind = true;
 //			}
-
-		for(Friend fr : lists) {
-			if(searchName.compareTo(fr.name) == 0) {
-				fr.showAllData();
-				System.out.println("**귀하가 요청하는 정보를 찾았습니다.**");
-				isFind = true;
-			}
+//		}
+			
+			
 		}
-		if (isFind == false)
+		if (isFind == false) {
 			System.out.println("*** 찾는 정보가 없습니다. ***");
+		}
 	}
 	/*
-	 * 퀴즈1]검색 기능의 메서드 searchInfo()를 일반 for문을 통해 기능을 구현하시오. 퀴즈2]삭제 기능의 메서드
-	 * deleteInfo()를 이터레이터를 통해 기능을 구현하시오.
+	 * 퀴즈1]검색 기능의 메서드 searchInfo()를 일반 for문을 통해 기능을 구현하시오. 
+	 * 퀴즈2]삭제 기능의 메서드 deleteInfo()를 이터레이터를 통해 기능을 구현하시오.
 	 */
 
 	public void deleteInfo() {
-
+		
+		//검색 확인용 변수
+		boolean isFind = false;
+//		int deleteIndex = -1;
+		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("삭제할 이름을 입력하세요: ");
 		String deleteName = scan.nextLine();
-		// 이터레이터 인스턴스를 생성
-		Iterator<Friend> itr = lists.iterator();
-		int deleteIndex = -1;
 		
+		/* 이터레이터 인스턴스를 생성, List 컬렉션에 저장된 인스턴스를 기반으로 Iterator인스턴스를 생성한다.*/
+		Iterator<Friend> itr = lists.iterator();
+		
+		//저장된 인스턴스의 갯수만큼 반복한다. 
 		while (itr.hasNext()) {
+			//컬렉션에 저장된 참조값을 순서대로 인출한다. 
 			Friend fr = itr.next();
-			if (deleteName.compareTo(fr.name) == 0) {
-				itr.remove();
-				deleteIndex = 1;
+			//인스턴스의 이름과 삭제할 이름을 비교한다. 
+			if (deleteName.equals(fr.name)) {
+//			if (deleteName.compareTo(fr.name) == 0) {
+				lists.remove(fr);
+//				itr.remove();
+				isFind = true;
+//				deleteIndex = 1;
 				break;
 			}
 		}
-		if (deleteIndex  == -1) {
+		
+		if (isFind == false) {
+//		if (deleteIndex == -1) {
 			System.out.println("==삭제된 데이터가 없습니다.==");
-		} 
-		else {
+		} else {
 			System.out.println("==데이터가 삭제되었습니다.==");
 		}
-
 	}
 
 	// 연락처 정보 삭제
