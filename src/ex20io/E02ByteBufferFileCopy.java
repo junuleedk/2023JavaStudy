@@ -41,9 +41,9 @@ public class E02ByteBufferFileCopy {
 				//1024씩 증가시킨다. 
 				copyByte += readLen;
 			}
+			//스트림을 닫아준다. 
 			if(in!= null) in.close();
 			if(out!= null) out.close();
-			//스트림을 닫아준다. 
 			System.out.println("복사된 파일크기: " + copyByte + "byte");
 			System.out.println("복사된 파일크기: " + (copyByte/1024) + "KByte");
 			System.out.println("복사된 파일크기: " + (copyByte/1024 * 1024) + "MByte");

@@ -46,25 +46,27 @@ public class QuArrayList {
 		list.add(st3);
 		list.add(st4);
 
-		boolean isFind = false;
 		Scanner input = new Scanner(System.in);
 		System.out.print("검색할 이름을 입력하세요: ");
 		String searchName = input.nextLine();
 
+		boolean isFind = false;
 		for (Student st : list) {
 			if (searchName.equals(st.name)) {
+				System.out.println("[검색되었습니다]");
+				System.out.println("오버라이딩 한 equals() 호출됨:" + searchName);
 				isFind = true;
 				list.remove(st);
-				System.out.println("[검색되었습니다]");
 				System.out.println("[삭제 후 정보 출력]");
-				for (Student updatedSt : list) {
-					updatedSt.showAllData();
-				}
-			} 
-			else {
-				System.out.println("검색결과가 없습니다.");
+				break;
 			}
-			break;
+		}
+		for (Student updatedSt : list) {
+			updatedSt.showAllData();
+		}
+
+		if (!isFind) {
+			System.out.println("검색결과가 없습니다.");
 		}
 
 		// 1.검색할 이름을 입력받음
